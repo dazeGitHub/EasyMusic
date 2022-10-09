@@ -135,7 +135,6 @@ public class MusicService extends Service {
 		public void run() {
 			util.download();
 		}
-		
 	}
 	
 	public void addWatcher(Watcher watcher) {

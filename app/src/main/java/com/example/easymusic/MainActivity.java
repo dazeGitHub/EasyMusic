@@ -556,8 +556,7 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	public void executeDownloadUtil(DownloadUtil util) {
-		Toast.makeText(mContext, "executeDownloadUtil", Toast.LENGTH_LONG)
-				.show();
+		Toast.makeText(mContext, "executeDownloadUtil", Toast.LENGTH_LONG).show();
 		musicService.downloadMusic(util);
 	}
 
