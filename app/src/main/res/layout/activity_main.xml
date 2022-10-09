@@ -1,0 +1,160 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sprd.easymusic.MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:background="#18f"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/fragment1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/title_section1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/fragment2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/title_section2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/fragment3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/title_section3"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/fragment4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/title_section4"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:gravity="center" >
+
+        <!-- 该textview作为红线移动到当前fragment下 -->
+
+        <TextView
+            android:id="@+id/fragmentTitle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#f00" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3" />
+    </LinearLayout>
+
+
+        <android.support.v4.view.ViewPager
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:alpha="0.8"
+            android:background="#afeeee"
+            tools:context=".MainActivity" >
+        </android.support.v4.view.ViewPager>
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:orientation="horizontal">
+
+        <com.sprd.easymusic.myview.MyProgressBar
+            android:id="@+id/mainProgress"
+            android:layout_width="match_parent"
+            android:layout_height="79dp" />
+
+    </LinearLayout>
+    <LinearLayout 
+            android:id="@+id/playarea"
+       		android:layout_width="match_parent"
+    		android:layout_height="0dp"
+    		android:layout_weight="2"
+    		android:orientation="horizontal"
+    		android:gravity="center_vertical"
+    		android:background="#65cb65"
+    		android:alpha="0.7">
+        <!--android:background="#65cb65"  -->
+		"
+        <ImageView
+            android:id="@+id/playtag"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:src="@drawable/launcher"
+            android:layout_marginLeft="0dp"/>
+        
+        <TextView 
+            android:id="@+id/musicInfo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:textSize="16dp"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true" 
+			android:ellipsize="marquee" 
+			android:marqueeRepeatLimit="marquee_forever"
+			android:scrollHorizontally = "true"
+			android:focusable ="true"
+			android:focusableInTouchMode="true"/>
+
+        <ImageButton
+            android:id="@+id/pre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_previous"
+            android:layout_weight="1" 
+            android:background="#dd00dd"/>
+
+        <ImageButton
+            android:id="@+id/playandpause"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="#dd00dd"
+            android:src="@android:drawable/ic_media_play" />
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="#dd00dd"
+            android:src="@android:drawable/ic_media_next" />
+    </LinearLayout>
+
+</LinearLayout>
