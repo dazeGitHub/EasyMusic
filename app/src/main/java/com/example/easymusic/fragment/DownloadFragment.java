@@ -270,7 +270,7 @@ public class DownloadFragment extends Fragment {
 						//一首歌曲下载完成时通知列表更新-正在下载移除该任务，已完成下载添加该音乐
 						map.put("duration", StringUtil.getMusicLongDuration(intent.getStringExtra("filePath")));
 						downloadedMusic.add(downloadingMusic.remove(i));
-						Toast.makeText(mContext, "下载歌曲完成！", 100).show();
+						Toast.makeText(mContext, "下载歌曲完成！", Toast.LENGTH_SHORT).show();
 						break;
 					}
 				}

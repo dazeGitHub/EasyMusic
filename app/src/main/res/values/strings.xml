@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">EasyMusic</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">本地音乐</string>
+    <string name="title_section2">收藏音乐</string>
+    <string name="title_section3">网络音乐</string>
+    <string name="title_section4">下载列表</string>
 </resources>

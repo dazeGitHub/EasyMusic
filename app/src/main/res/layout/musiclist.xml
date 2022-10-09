@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <com.sprd.easymusic.myview.RefreshableListView 
+    <com.example.easymusic.myview.RefreshableListView
         android:id="@+id/musicList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.sprd.easymusic.myview.RefreshableListView>
+    </com.example.easymusic.myview.RefreshableListView>
 
 </LinearLayout>

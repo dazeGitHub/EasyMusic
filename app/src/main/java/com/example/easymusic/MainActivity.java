@@ -50,7 +50,11 @@ import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends FragmentActivity implements
 		MusicListFragment.CallBack, StoredSongFragment.CallBack,
@@ -133,8 +137,7 @@ public class MainActivity extends FragmentActivity implements
 		fragmentList.add(new StoredSongFragment());
 		fragmentList.add(new NetFragment());
 		fragmentList.add(new DownloadFragment());
-		mSectionsPagerAdapter = new SectionsPagerAdapter(
-				getSupportFragmentManager());
+		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 		fragmentTitle1 = (TextView) findViewById(R.id.fragment1);
@@ -179,7 +182,7 @@ public class MainActivity extends FragmentActivity implements
 		currentPlayMusic = allMusic;
 		bindToService();
 		// bindToDownloadService();
-		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
+		mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			public void onPageSelected(int position) {
 
 			}
@@ -227,12 +230,11 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	private void updatePlayMusicInfo() {
-		currentMusicTitle = (String) currentPlayMusic.get(currentMusicPos).get(
-				"title");
-		currentMusicArtist = (String) currentPlayMusic.get(currentMusicPos)
-				.get("artist");
-		currentMusicDuration = (Long) (currentPlayMusic.get(currentMusicPos)
-				.get("duration"));
+		if(currentPlayMusic != null && currentPlayMusic.size() != 0){
+			currentMusicTitle = (String) currentPlayMusic.get(currentMusicPos).get("title");
+			currentMusicArtist = (String) currentPlayMusic.get(currentMusicPos).get("artist");
+			currentMusicDuration = (Long) (currentPlayMusic.get(currentMusicPos).get("duration"));
+		}
 		musicInfo.setText(currentMusicTitle + "-" + currentMusicArtist);
 		if (isPlaying) {
 			musicInfo.requestFocus();
@@ -315,6 +317,10 @@ public class MainActivity extends FragmentActivity implements
 
 	// 通过获得的MusicService引用调用播放音乐的方法，方法传进去的参数为音乐url
 	protected void playMusic(int position) {
+		if(currentPlayMusic == null || currentPlayMusic.size() == 0){
+			Toast.makeText(this, "当前播放音乐的列表为空", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		String url = (String) currentPlayMusic.get(position).get("url");
 		if (musicService != null) {
 			musicService.play(url);
@@ -411,28 +417,26 @@ public class MainActivity extends FragmentActivity implements
 		}
 		return false;
 	}
+	
+	private int safeGetColumnIndex(Cursor musicCursor, String columnName){
+		int result = musicCursor.getColumnIndex(columnName);
+		return result == -1 ? 0 : result;
+	}
 
 	// 获取到的音乐以Map的形式存储在dbMusic中
 	private void getMusic(Cursor musicCursor) {
 		while (musicCursor.moveToNext()) {
 			Map<String, Object> item = new HashMap<String, Object>();
-			long id = musicCursor.getLong(musicCursor
-					.getColumnIndex(MediaStore.Audio.Media._ID));
-			String title = musicCursor.getString(musicCursor
-					.getColumnIndex(MediaStore.Audio.Media.TITLE));
-			String artist = musicCursor.getString(musicCursor
-					.getColumnIndex(MediaStore.Audio.Media.ARTIST));
+			long id = musicCursor.getLong(safeGetColumnIndex(musicCursor, MediaStore.Audio.Media._ID));
+			String title = musicCursor.getString(safeGetColumnIndex(musicCursor, MediaStore.Audio.Media.TITLE));
+			String artist = musicCursor.getString(safeGetColumnIndex(musicCursor, MediaStore.Audio.Media.ARTIST));
 			if (artist != null && artist.equals("<unknown>")) {
 				continue;
 			}
-			long duration = musicCursor.getLong(musicCursor
-					.getColumnIndex(MediaStore.Audio.Media.DURATION));
-			long size = musicCursor.getLong(musicCursor
-					.getColumnIndex(MediaStore.Audio.Media.SIZE));
-			String url = musicCursor.getString(musicCursor
-					.getColumnIndex(MediaStore.Audio.Media.DATA));
-			int isMusic = musicCursor.getInt(musicCursor
-					.getColumnIndex(MediaStore.Audio.Media.IS_MUSIC));
+			long duration = musicCursor.getLong(safeGetColumnIndex(musicCursor, MediaStore.Audio.Media.DURATION));
+			long size = musicCursor.getLong(safeGetColumnIndex(musicCursor, MediaStore.Audio.Media.SIZE));
+			String url = musicCursor.getString(safeGetColumnIndex(musicCursor, MediaStore.Audio.Media.DATA));
+			int isMusic = musicCursor.getInt(safeGetColumnIndex(musicCursor, MediaStore.Audio.Media.IS_MUSIC));
 			if (isMusic != 0) {
 				item.put("id", id);
 				item.put("title", title);
@@ -726,13 +730,13 @@ public class MainActivity extends FragmentActivity implements
 		long det = System.currentTimeMillis() - firstBackPressedTime;
 		if (backPressedCount == 0) {
 			backPressedCount += 1;
-			Toast.makeText(mContext, "再按一次退出", 300).show();
+			Toast.makeText(mContext, "再按一次退出", Toast.LENGTH_LONG).show();
 			firstBackPressedTime = System.currentTimeMillis();
 			return;
 		} else if (backPressedCount == 1 && det < 2000) {
 			super.onBackPressed();
 		} else {
-			Toast.makeText(mContext, "再按一次退出", 300).show();
+			Toast.makeText(mContext, "再按一次退出", Toast.LENGTH_LONG).show();
 			firstBackPressedTime = System.currentTimeMillis();
 		}
 	}

@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +26,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+
+import androidx.fragment.app.Fragment;
 
 public class StoredSongFragment extends Fragment {
 	private final String TAG = "StoredSongFragment";
@@ -124,7 +125,7 @@ public class StoredSongFragment extends Fragment {
 		public void onReceive(Context context, Intent intent) {
 			if (intent.getAction().equals(ACTION_REFRESH)) {
 				musicListAdapter.notifyDataSetChanged();
-				Toast.makeText(mContext, "刷新收藏列表成功！", 100).show();
+				Toast.makeText(mContext, "刷新收藏列表成功！", Toast.LENGTH_SHORT).show();
 			}
 		}
 		

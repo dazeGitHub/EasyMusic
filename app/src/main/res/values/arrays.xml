@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="backgroud">
+        <item>red</item>
+        <item>green</item>
+        <item>blue</item>
+    </string-array>
+    
+    <string-array name="backgroud_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    
+    <string-array name="textSize">
+        <item>12sp</item>
+        <item>16sp</item>
+        <item>20sp</item>
+    </string-array>
+    
+    <string-array name="textSize_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    
+</resources>

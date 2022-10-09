@@ -17,7 +17,10 @@ public class StringUtil {
 	}
 	
 	public static String removeReg(String source, String reg) {
-		if (reg!= null) {
+		if(source == null){
+			return "";
+		}
+		if (reg != null) {
 			return source.replaceAll(reg, "");
 		}
 		//保留中文和英文字符

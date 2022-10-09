@@ -79,7 +79,7 @@ public class RefreshableListView extends ListView implements OnScrollListener, O
 				case REFRESH_COMPLETE:
 					bar.setVisibility(View.INVISIBLE);
 					refreshText.setText("刷新成功");
-					//Toast.makeText(context, "刷新成功", 300).show();
+					//Toast.makeText(context, "刷新成功", Toast.LENGTH_LONG).show();
 					sendMessageDelayed(handler.obtainMessage(REFRESH_FINISH), 300);
 					break;
 				case REFRESH_FINISH:

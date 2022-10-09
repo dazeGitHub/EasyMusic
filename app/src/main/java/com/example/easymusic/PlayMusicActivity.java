@@ -332,7 +332,7 @@ public class PlayMusicActivity extends Activity implements MusicService.Watcher 
                     @Override  
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, error.getMessage(), error);  
-                        Toast.makeText(PlayMusicActivity.this, "加载失败！", 300).show();
+                        Toast.makeText(PlayMusicActivity.this, "加载失败！", Toast.LENGTH_LONG).show();
                     }  
                 });
 		mQueue.add(stringRequest);	
@@ -340,7 +340,7 @@ public class PlayMusicActivity extends Activity implements MusicService.Watcher 
 	
 	//搜索专辑图片
 	private void searchAlbumPic(String title, String artist) {
-		Toast.makeText(mContext, "搜索专辑图片...", 300).show();
+		Toast.makeText(mContext, "搜索专辑图片...", Toast.LENGTH_LONG).show();
 		//有些歌名和歌手信息中可能会携带些非原始的特殊符号需要去掉，比如《》.,之类的
 		String ti = StringUtil.removeReg(title, null);
 		String ar = StringUtil.removeReg(artist, null);
@@ -362,14 +362,14 @@ public class PlayMusicActivity extends Activity implements MusicService.Watcher 
 			Log.d(TAG, "lrc = " + lrc);
 		} catch (JSONException e) {
 			e.printStackTrace();
-			Toast.makeText(PlayMusicActivity.this, "抱歉，未搜索到歌词！", 300).show();
+			Toast.makeText(PlayMusicActivity.this, "抱歉，未搜索到歌词！", Toast.LENGTH_LONG).show();
 		}
 	}
 	
 	//下载歌词
 	private void downloadLrc(String lrcUrl) {
 		final String musicLrc = lrcUrl;
-		Toast.makeText(mContext, "正在下载歌词，请稍候...", 300).show();
+		Toast.makeText(mContext, "正在下载歌词，请稍候...", Toast.LENGTH_LONG).show();
 		String  localFile = getLocalPath(0);
 		File file = new File(localFile);
 		//开启一个线程下载歌词
@@ -380,12 +380,12 @@ public class PlayMusicActivity extends Activity implements MusicService.Watcher 
 	//下载专辑图片
 	public void downloadAlbumPic(String albumPicUrl) {
 		if (albumPicUrl == null) {
-			Toast.makeText(mContext, "未搜索到匹配图片", 300).show();
+			Toast.makeText(mContext, "未搜索到匹配图片", Toast.LENGTH_LONG).show();
 			albumPic.setImageResource(R.drawable.rotate);
 			return;
 		}
 		final String musicAlbumPic = albumPicUrl;
-		//Toast.makeText(mContext, "正在下载专辑图片，请稍候...", 300).show();
+		//Toast.makeText(mContext, "正在下载专辑图片，请稍候...", Toast.LENGTH_LONG).show();
 		String localFile = getLocalPath(1);
 		File file = new File(localFile);
 		//开启两个线程下载专辑图片
@@ -473,10 +473,10 @@ public class PlayMusicActivity extends Activity implements MusicService.Watcher 
 	private BroadcastReceiver updateReceiver = new BroadcastReceiver() {
 		public void onReceive(Context context, Intent intent) {
 			if (intent.getAction().equals(ACTION_DOWNLOADLRC_SUCCESS)) {
-				Toast.makeText(mContext, "下载歌词成功！", 100).show();
+				Toast.makeText(mContext, "下载歌词成功！", Toast.LENGTH_SHORT).show();
 				showLrc();
 			} else if (intent.getAction().equals(ACTION_DOWNLOADPIC_SUCCESS)) {
-				Toast.makeText(mContext, "下载专辑图片成功！", 100).show();
+				Toast.makeText(mContext, "下载专辑图片成功！", Toast.LENGTH_SHORT).show();
 				showAlbumPic();
 			} else if (intent.getAction().equals(ACTION_UPDATE_PLAYSTATE)) {
 				boolean autoChange = intent.getBooleanExtra("autoChange", false);

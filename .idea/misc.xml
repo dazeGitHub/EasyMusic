@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/AsProject/EasyMusic/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Project/AsProject/EasyMusic/app/src/main/res/layout/play.xml" value="0.1" />
         <entry key="..\:/Project/AsProject/EasyMusic/app/src/main/res/layout/storedmusiclist_item.xml" value="0.22" />
+        <entry key="..\:/Project/AsProject/EasyMusic/app/src/main/res/menu/main.xml" value="0.17916666666666667" />
+        <entry key="..\:/Project/AsProject/EasyMusic/app/src/main/res/xml/pref_settings.xml" value="0.1" />
       </map>
     </option>
   </component>

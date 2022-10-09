@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <ListPreference 
+        android:title="backgroud" 
+        android:key="backgroud"
+        android:entries="@array/backgroud"
+        android:entryValues="@array/backgroud_values"/>
+    <ListPreference 
+        android:title="textSize" 
+        android:key="textSize"
+        android:entries="@array/textSize"
+        android:entryValues="@array/textSize_values"/>
+    <SwitchPreference
+        android:title="swtich"
+        android:key="switch" 
+        android:summaryOn="open" 
+        android:summaryOff="close"/>
+    <PreferenceScreen android:key="others" android:title="others">
+        <Preference 
+            android:key="key1" 
+            android:title="title1"/>
+        <Preference 
+            android:key="key2" 
+            android:title="title2"/>
+    </PreferenceScreen>
+    
+    <Preference 
+        android:key="version" 
+        android:summary="version 0.1" 
+        android:title="version"/>
+</PreferenceScreen>

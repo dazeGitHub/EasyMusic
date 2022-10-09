@@ -188,6 +188,10 @@ public class NetFragment extends Fragment {
 
 	//返回可以访问的网络资源
 	public static String getRealUrl(String query) {
+		if(query == null){
+			query = "abc";
+		}
+
 		String key = null;
 		try {
 			key = URLEncoder.encode(query, "UTF-8");
@@ -267,7 +271,7 @@ public class NetFragment extends Fragment {
 				((PlayMusicActivity) context).downloadAlbumPic(downloadUrl);
 				
 			}
-			if (netMusicList1.size() == 0) Toast.makeText(context, "请检查网络连接", 300).show();
+			if (netMusicList1.size() == 0) Toast.makeText(context, "请检查网络连接", Toast.LENGTH_LONG).show();
 		}
 
 		//json解析网络响应

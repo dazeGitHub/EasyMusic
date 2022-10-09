@@ -327,7 +327,7 @@ public class LrcView extends TextView {
 			super.onPostExecute(result);
 			lrcView.setLrcList(lrcList);
 			if (lrcList.size() == 0) {
-				Toast.makeText(context, "歌词格式不对", 300).show();
+				Toast.makeText(context, "歌词格式不对", Toast.LENGTH_LONG).show();
 			}
 			lrcView.setVisibility(View.VISIBLE);
 			lrcView.invalidate();

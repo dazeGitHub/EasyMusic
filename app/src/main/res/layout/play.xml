@@ -44,7 +44,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             android:src="@drawable/rotate" />  -->
-        <com.sprd.easymusic.myview.CircleImageView 
+        <com.example.easymusic.myview.CircleImageView
             android:id="@+id/lrcpic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -52,7 +52,7 @@
             android:alpha="0.6"
             android:src="@drawable/rotate"/>
         
-        <com.sprd.easymusic.myview.LrcView
+        <com.example.easymusic.myview.LrcView
             android:id="@+id/lrcview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
